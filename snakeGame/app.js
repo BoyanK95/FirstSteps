@@ -20,7 +20,7 @@ let snake = [
   { x: unitSize * 3, y: 0 },
   { x: unitSize * 2, y: 0 },
   { x: unitSize, y: 0 },
-  { x: 0, y: 0 }
+  { x: 0, y: 0 },
 ];
 
 window.addEventListener("keydown", changeDirection);
@@ -28,32 +28,57 @@ resetBtn.addEventListener("click", resetGame);
 
 gameStart();
 
-
-function gameStart(){
+function gameStart() {
   running = true;
   scoreText.textContent = score;
   createFood();
   drawFood();
   nextTick();
 };
-function nextTick(){};
-function clearBoard(){};
-function createFood(){
+function nextTick() {
+  if (running) {
+    setTimeout(() => {
+      clearBoard();
+      drawFood();
+      moveSnake();
+      drawSnake();
+      checkGameOver();
+      nextTick();
+    }, 75);
+  }
+  else{
+    displayGameOver();
+  }
+}
+function clearBoard() {
+  ctx.fillStyle = boardBackground;
+  ctx.fillRect(0, 0, gameWidth, gameHeight);
+}
+function createFood() {
   function randomFood(min, max) {
-    const randNum = Math.round((Math.random() * (max - min) + min) / unitSize) * unitSize;
+    const randNum =
+      Math.round((Math.random() * (max - min) + min) / unitSize) * unitSize;
 
     return randNum;
   }
   foodX = randomFood(0, gameWidth - unitSize);
   foodY = randomFood(0, gameWidth - unitSize);
-};
-function drawFood(){
-    ctx.fillStyle = foodColor;
-    ctx.fillRect(foodX, foodY, unitSize, unitSize);
-};
-function moveSnake() {};
-function drawSnake() {};
-function changeDirection() {};
-function checkGameOver() {};
-function displayGameOver() {};
-function resetGame() {};
+}
+function drawFood() {
+  ctx.fillStyle = foodColor;
+  ctx.fillRect(foodX, foodY, unitSize, unitSize);
+}
+function moveSnake() {}
+function drawSnake() {
+  ctx.fillStyle = snakeColor;
+  ctx.strokeStyle = snakeBorder;
+  snake.forEach(snakePart => {
+    ctx.fillRect(snakePart.x, snakePart.y, unitSize, unitSize);
+    ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
+
+  })
+}
+function changeDirection() {}
+function checkGameOver() {}
+function displayGameOver() {}
+function resetGame() {}
