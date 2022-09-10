@@ -143,7 +143,7 @@ function displayGameOver() {
   ctx.font = "50px bold MV Boli";
   ctx.fillStyle = "black";
   ctx.textAlign = "center";
-  ctx.fillText("GAMGE OVER!", gameWidth / 2, gameHeight /2);
+  ctx.fillText("GAME OVER!", gameWidth / 2, gameHeight /2);
   running = false;
 }
 function resetGame() {
