@@ -1,0 +1,31 @@
+.choiceBtn {
+    line-height: 30px;
+    width: 150px;
+    border-radius: 17px;
+    cursor: pointer;
+}
+.choiceBtn:hover {
+    background-color: rgb(89, 84, 84);
+    color: #fff;
+    line-height: 30px;
+    width: 150px;
+    border-radius: 17px;
+    cursor: pointer;
+    box-shadow: 2px 2px 7px rgba(0,0,0, .5);
+}
+
+#gameDiv{
+    font-family: 'Brush Script MT', cursive;
+    border: 3px solid;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: lightgray;
+    text-align: center;
+}
+
+#playerText{
+    color: blue;
+}
+#computerText{
+    color: red;
+}
