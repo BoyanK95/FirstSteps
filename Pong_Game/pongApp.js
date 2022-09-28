@@ -44,8 +44,20 @@ resetBtn.addEventListener("click", resetGame);
 gameStart();
 
 
-function gameStart(){};
-function nextTick(){};
+function gameStart(){
+    createBall();
+    nextTick()
+};
+function nextTick(){
+    intervalI = setTimeout(() => {
+        clearBoard();
+        drawPaddles();
+        moveBall();
+        drawBall(ballX, ballY);
+        checkCollision();
+        nextTick;
+    }, 10)
+};
 function clearBoard(){};
 function drawPaddles(){
     ctx.strokeStyle = paddleBorder;
@@ -61,7 +73,7 @@ function drawPaddles(){
 };
 function createBall(){};
 function moveBall(){};
-function drawBall(){};
+function drawBall(ballX, ballY){};
 function checkCollision(){};
 function changeDirection(){};
 function updateScore(){};
